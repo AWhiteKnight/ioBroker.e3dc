@@ -1,0 +1,97 @@
+{
+	"common": {
+		"name": "e3dc",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "e3dc",
+		"titleLang": {
+			"en": "e3dc",
+			"de": "e3dc",
+			"ru": "e3dc",
+			"pt": "e3dc",
+			"nl": "e3dc",
+			"fr": "e3dc",
+			"it": "e3dc",
+			"es": "e3dc",
+			"pl": "e3dc",
+			"zh-cn": "e3dc"
+		},
+		"desc": {
+			"en": "Adapter for E3DC Storage Solutions",
+			"de": "Adapter für E3DC-Speicherlösungen",
+			"ru": "Адаптер для систем хранения E3DC",
+			"pt": "Adaptador para soluções de armazenamento E3DC",
+			"nl": "Adapter voor E3DC-opslagoplossingen",
+			"fr": "Adaptateur pour solutions de stockage E3DC",
+			"it": "Adattatore per soluzioni di archiviazione E3DC",
+			"es": "Adaptador para soluciones de almacenamiento E3DC",
+			"pl": "Adapter do rozwiązań pamięci masowej E3DC",
+			"zh-cn": "E3DC存储解决方案适配器"
+		},
+		"authors": [
+			"AWhiteKnight <awhiteknight@unity-mail.de>"
+		],
+		"keywords": [
+			"energy",
+			"solar"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "e3dc.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/AWhiteKnight/ioBroker.e3dc/master/admin/e3dc.png",
+		"readme": "https://github.com/AWhiteKnight/ioBroker.e3dc/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "iot-systems",
+		"compact": true,
+		"materialize": true,
+		"dependencies": [
+			{
+				"js-controller": ">=1.4.2"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
+}
