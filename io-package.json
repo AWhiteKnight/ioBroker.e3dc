@@ -67,6 +67,10 @@
 		]
 	},
 	"native": {
+		"ipAddress": "127.0.0.1",
+		"isFarmingMster": false,
+		"password": "",
+		"requestInterval": 3
 	},
 	"objects": [],
 	"instanceObjects": [
