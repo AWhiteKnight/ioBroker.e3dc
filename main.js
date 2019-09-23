@@ -20,14 +20,20 @@ let adapter;
 let timer;
 /** @type {boolean} */
 let bStopExecution = false;
+/** @type {boolean} */
+let bConnectionOpen = false;
 
+/** @type {string} */
 let ipAddress;
+/** @type {number} */
 let ipPort;
+/** @type {string} */
 let password;
 let client;
 
 function recieveLoop(data) {
-	if(bStopExecution) {
+	if(bStopExecution || !bConnectionOpen) {
+		adapter.setState('info.connection', false, true);
 		return;
 	}
 	adapter.log.debug('recieveLoop');
@@ -35,7 +41,8 @@ function recieveLoop(data) {
 }
 
 async function mainLoop() {
-	if(bStopExecution) {
+	if(bStopExecution || !bConnectionOpen) {
+		adapter.setState('info.connection', false, true);
 		return;
 	}
 	await adapter.log.debug('mainLoop');
@@ -87,23 +94,22 @@ class E3dc extends utils.Adapter {
 			const net = require('net');
 
 			client = new net.Socket();
-			await client.connect(ipPort, ipAddress, async () => {
+			client.connect(ipPort, ipAddress, async () => {
+				bConnectionOpen = true;
 				await adapter.log.debug('CONNECTED TO: ' + ipAddress + ':' + ipPort);
+				// Add a 'data' event handler for the client socket
+				// data is what the server sent to this socket
+				client.on('data', recieveLoop);
+				// Add a 'close' event handler for the client socket
+				client.on('close', () => {
+					bConnectionOpen = false;
+					adapter.log.debug('Connection closed');
+				});
+				// start mainLoop
+				await mainLoop();
+				// set connection indicator
+				await this.setStateAsync('info.connection', true, true);
 			});
-			
-			// Add a 'data' event handler for the client socket
-			// data is what the server sent to this socket
-			client.on('data', recieveLoop);
-			
-			// Add a 'close' event handler for the client socket
-			client.on('close', () => {
-				adapter.log.debug('Connection closed');
-			});
-
-			// start mainLoop
-			await mainLoop(); 
-			// set connection indicator
-			await this.setStateAsync('info.connection', true, true);
 		});
 	}
 
