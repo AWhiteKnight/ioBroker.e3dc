@@ -1,6 +1,6 @@
 /* jshint strict:true */
 /* jslint node: true */
-/* jslint esversion: 6 */
+/* jslint esversion: 9 */
 'use strict';
 
 /*
@@ -12,9 +12,9 @@
 const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
-const mcrypt = require('mcrypt');
+//const mcrypt = require('mcrypt');
 
-/** @type {Moma} */
+/** @type {E3dc} */
 let adapter;
 /** @type {NodeJS.Timeout} */
 let timer;

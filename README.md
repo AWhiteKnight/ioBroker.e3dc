@@ -14,6 +14,7 @@
 
 Adapter for E3DC Storage Solutions
 
+Adapter needs at least nodejs version 8 / ES9 / ECMAScript2018.
 
 ## Changelog
 
