@@ -67,9 +67,9 @@
 		]
 	},
 	"native": {
-		"ipAddress": "127.0.0.1",
+		"ipAddress": "0.0.0.0",
 		"isFarmingMaster": false,
-		"rscpPassword": "",
+		"rscpPassword": "Max32Digits",
 		"requestInterval": 60
 	},
 	"objects": [],
