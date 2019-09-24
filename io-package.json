@@ -68,7 +68,7 @@
 	},
 	"native": {
 		"ipAddress": "127.0.0.1",
-		"isFarmingMaster": true,
+		"isFarmingMaster": false,
 		"rscpPassword": "",
 		"requestInterval": 60
 	},

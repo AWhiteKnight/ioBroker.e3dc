@@ -86,6 +86,7 @@ class E3dc extends utils.Adapter {
 		}
 		// start a dummy server if localhost
 		if(ipAddress == '127.0.0.1') {
+			ipPort = 8088;
 			this.log.debug('starting local server');
 			const server = net.createServer(function(socket) {
 				//socket.write('Echo server\r\n');
