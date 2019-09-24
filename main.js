@@ -47,9 +47,13 @@ async function mainLoop() {
 	}
 	await adapter.log.debug('mainLoop');
 	// Write a message to the socket as soon as the client is connected, the server will receive it as message from the client
-	client.write('I am Chuck Norris!');
+	try {
+		client.write('I am Chuck Norris!');
 
-	timer = setTimeout(mainLoop, adapter.config.requestInterval*1000);
+		timer = setTimeout(mainLoop, adapter.config.requestInterval*1000);
+	} catch(err) {
+		adapter.log.debug('error on write: ' + err);
+	}
 }
 
 class E3dc extends utils.Adapter {
@@ -92,27 +96,29 @@ class E3dc extends utils.Adapter {
 			bStopExecution = false;
 			// establish socket connection
 			const net = require('net');
-
 			client = new net.Socket();
-			client.connect(ipPort, ipAddress, async () => {
-				bConnectionOpen = true;
-				await adapter.log.debug('CONNECTED TO: ' + ipAddress + ':' + ipPort);
-				// Add a 'data' event handler for the client socket
-				// data is what the server sent to this socket
-				client.on('data', recieveLoop);
-				// Add a 'close' event handler for the client socket
-				client.on('close', () => {
-					bConnectionOpen = false;
-					adapter.log.debug('Connection closed');
+			try {
+				client.connect(ipPort, ipAddress, async () => {
+					// Add a 'data' event handler for the client socket
+					client.on('data', recieveLoop);
+					// Add a 'close' event handler for the client socket
+					client.on('close', () => {
+						bConnectionOpen = false;
+						adapter.log.debug('Connection closed');
+					});
+					bConnectionOpen = true;
+					await adapter.log.debug('Connected to: ' + ipAddress + ':' + ipPort);
+					// data is what the server sent to this socket
+					// start mainLoop
+					await mainLoop();
+					// set connection indicator
+					await this.setStateAsync('info.connection', true, true);
 				});
-				// start mainLoop
-				await mainLoop();
-				// set connection indicator
-				await this.setStateAsync('info.connection', true, true);
-			});
+			} catch(err) {
+				adapter.log.debug('error on connect: ' + err);
+			}
 		});
 	}
-
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
 	 * @param {() => void} callback
