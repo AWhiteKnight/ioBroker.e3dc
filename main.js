@@ -36,19 +36,20 @@ function recieveLoop(data) {
 		adapter.setState('info.connection', false, true);
 		return;
 	}
-	adapter.log.debug('recieveLoop');
-	adapter.log.debug('DATA: ' + data);
+	adapter.log.debug('Recieved data: ' + data);
 }
 
+let i = 0;
 async function mainLoop() {
 	if(bStopExecution || !bConnectionOpen) {
 		adapter.setState('info.connection', false, true);
 		return;
 	}
-	await adapter.log.debug('mainLoop');
 	// Write a message to the socket as soon as the client is connected, the server will receive it as message from the client
 	try {
-		client.write('I am Chuck Norris!');
+		const message = 'Hello E3DC!';
+		await adapter.log.debug('Sending: ' + message + i);
+		client.write(message + i++);
 
 		timer = setTimeout(mainLoop, adapter.config.requestInterval*1000);
 	} catch(err) {
@@ -74,6 +75,7 @@ class E3dc extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
+		const net = require('net');
 		// Initialize your adapter here
 		ipAddress = this.config.ipAddress;
 		// @ts-ignore
@@ -81,6 +83,16 @@ class E3dc extends utils.Adapter {
 			ipPort = 5034;
 		} else {
 			ipPort = 5033;
+		}
+		// start a dummy server if localhost
+		if(ipAddress == '127.0.0.1') {
+			this.log.debug('starting local server');
+			const server = net.createServer(function(socket) {
+				//socket.write('Echo server\r\n');
+				// returns data sent from client
+				socket.pipe(socket);
+			});
+			server.listen(ipPort, ipAddress);
 		}
 		// @ts-ignore
 		password = this.config.rscpPassword.substr(0,32);	// limit pw to 32 bytes
@@ -95,7 +107,6 @@ class E3dc extends utils.Adapter {
 		this.setState('info.connection', false, true, async () => {
 			bStopExecution = false;
 			// establish socket connection
-			const net = require('net');
 			client = new net.Socket();
 			try {
 				client.connect(ipPort, ipAddress, async () => {
