@@ -69,7 +69,7 @@
 	"native": {
 		"ipAddress": "127.0.0.1",
 		"isFarmingMster": false,
-		"password": "",
+		"rscpPassword": "",
 		"requestInterval": 3
 	},
 	"objects": [],
