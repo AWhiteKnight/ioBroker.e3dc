@@ -84,7 +84,7 @@ class E3dc extends utils.Adapter {
 		} else {
 			ipPort = 5033;
 		}
-		// start a dummy server if localhost
+		// start a dummy server if localhost just for travis tests
 		if(ipAddress == '0.0.0.0' || ipAddress == '127.0.0.1') {
 			ipAddress = '0.0.0.0';
 			ipPort=8888;
