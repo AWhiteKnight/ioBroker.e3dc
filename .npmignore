@@ -27,4 +27,5 @@ admin/i18n
 maintenance/**
 
 ideas*
+tsconfig.json
 .vscode
