@@ -14,28 +14,52 @@ systemDictionary = {
 		'pl': 'Ustawienia adaptera dla e3dc',
 		'zh-cn': 'e3dc的适配器设置'
 	},
-	'option1': {
-		'en': 'option1',
-		'de': 'Option 1',
-		'ru': 'Опция 1',
-		'pt': 'Opção 1',
-		'nl': 'Optie 1',
-		'fr': 'Option 1',
-		'it': 'opzione 1',
-		'es': 'Opción 1',
-		'pl': 'opcja 1',
-		'zh-cn': '选项1'
+	'ipAddress': {
+		'en': 'IP-Addresse of the Storage ',
+		'de': 'IP-Adresse des Speichers',
+		'ru': 'IP-адрес хранилища',
+		'pt': 'Endereço IP do armazenamento',
+		'nl': 'IP-adres van de opslag',
+		'fr': 'Adresse IP du stockage',
+		'it': 'Indirizzo IP della memoria',
+		'es': 'Dirección IP del almacenamiento',
+		'pl': 'Adres IP pamięci masowej',
+		'zh-cn': '存储的IP地址'
 	},
-	'option2': {
-		'en': 'option2',
-		'de': 'Option 2',
-		'ru': 'option2',
-		'pt': 'opção 2',
-		'nl': 'Optie 2',
-		'fr': 'Option 2',
-		'it': 'opzione 2',
-		'es': 'opcion 2',
-		'pl': 'Opcja 2',
-		'zh-cn': '选项2'
+	'isFarmingMaster': {
+		'en': '"Master" of a "Farming" installation',
+		'de': '"Master" einer "Farming" -Installation',
+		'ru': '«Мастер» фермерского хозяйства',
+		'pt': '"Mestre" de uma instalação "Farming"',
+		'nl': '"Master" van een "Farming" -installatie',
+		'fr': '"Master" d\'une installation "Farming"',
+		'it': '"Master" di un\'installazione "Farming"',
+		'es': '"Master" de una instalación de "Farming"',
+		'pl': '„Master” instalacji „Farming”',
+		'zh-cn': '“Farming”装置的“Master”'
+	},
+	'password': {
+		'en': 'RSCP-Password (max. 32 characters)',
+		'de': 'RSCP-Passwort (max. 32 Zeichen)',
+		'ru': 'RSCP-пароль (не более 32 символов)',
+		'pt': 'Senha RSCP (máx. 32 caracteres)',
+		'nl': 'RSCP-wachtwoord (max. 32 tekens)',
+		'fr': 'RSCP-Password (32 caractères max.)',
+		'it': 'Password RSCP (massimo 32 caratteri)',
+		'es': 'Contraseña RSCP (máx. 32 caracteres)',
+		'pl': 'Hasło RSCP (maks. 32 znaki)',
+		'zh-cn': 'RSCP密码（最多32个字符）'
+	},
+	'requestInterval': {
+		'en': 'Request interval (in seconds)',
+		'de': 'Anforderungsintervall (in Sekunden)',
+		'ru': 'Интервал запроса (в секундах)',
+		'pt': 'Intervalo de solicitação (em segundos)',
+		'nl': 'Verzoekinterval (in seconden)',
+		'fr': 'Intervalle de demande (en secondes)',
+		'it': 'Intervallo richiesta (in secondi)',
+		'es': 'Intervalo de solicitud (en segundos)',
+		'pl': 'Interwał żądania (w sekundach)',
+		'zh-cn': '请求间隔（以秒为单位）'
 	}
 };
