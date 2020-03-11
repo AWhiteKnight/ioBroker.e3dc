@@ -84,6 +84,7 @@ class E3dc extends utils.Adapter {
 		} else {
 			ipPort = 5033;
 		}
+/*		
 		// start a dummy server if localhost just for travis tests
 		if(ipAddress == '0.0.0.0' || ipAddress == '127.0.0.1') {
 			ipAddress = '0.0.0.0';
@@ -104,11 +105,12 @@ class E3dc extends utils.Adapter {
 		this.log.debug('pw-length: ' + password.length);
 		// @ts-ignore
 		this.log.debug('requestInterval: ' + this.config.requestInterval);
-
+*/
 		// Reset the connection indicator during startup
 		this.setState('info.connection', false, true, async () => {
 			bStopExecution = false;
 			// establish socket connection
+/*
 			client = new net.Socket();
 			try {
 				client.connect(ipPort, ipAddress, async () => {
@@ -130,6 +132,7 @@ class E3dc extends utils.Adapter {
 			} catch(err) {
 				adapter.log.debug('error on connect: ' + err);
 			}
+*/
 		});
 	}
 	/**
